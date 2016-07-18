@@ -15,7 +15,11 @@ class ApplicationController < Sinatra::Base
   	erb :index
   end
 
+# private
 
+#   def post_params
+#        params.require(:post).permit(:image, :other, :params)
+#   end
 end
 
 
