@@ -31,10 +31,23 @@ class ApplicationController < Sinatra::Base
       @home_active = true
     end
     @user_id = session[:user_id]
+
+    @channels = Channel.all
+
+
+
+
+
     erb :index
   end
   after '/' do
     @home_active = false
+  end
+
+  get '/channel/:id' do
+    @channel = Channel.find(params[:id])
+    
+    erb :index
   end
 
 

@@ -1,13 +1,8 @@
 require './config/environment'
 require 'rack-flash'
 
-class UsersController < Sinatra::Base
-	configure do 
-		set :views, 'app/views/'
-		enable :sessions
-		set :session_secret, "!@$%^&QWERasdf"
-		use Rack::Flash
-	end
+class UsersController < ApplicationController
+
 
 	get '/login' do 
     	@login_active = true
@@ -16,7 +11,7 @@ class UsersController < Sinatra::Base
 	end
 
 	after '/login' do
-    @login_active = false
+	    @login_active = false
 	end
 
 	post '/login' do 
@@ -57,7 +52,6 @@ class UsersController < Sinatra::Base
 			user_exist = User.find_by(email: params[:user][:email])
 			if user_exist
 				flash[:message] = "#{user_exist.username} exists. Please log in."
-				# session[:user_id] = user_exist.id
 				redirect '/login'
 			else
 				user = User.create(params[:user])
