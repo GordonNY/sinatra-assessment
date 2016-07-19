@@ -17,8 +17,10 @@ class ApplicationController < Sinatra::Base
 
   ['/'].each do |path|
     before path do
-      if session[:user_id].nil? || User.find(session[:user_id]).nil?
+
+      if session[:user_id].nil? || User.find_by(id:session[:user_id]).nil?
         flash[:message] = "Please log in first."
+        session[:user_id] = nil
         redirect '/login' 
       end
     end

@@ -10,7 +10,7 @@ class UsersController < Sinatra::Base
 	end
 
 	get '/login' do 
-    @login_active = true
+    	@login_active = true
     
 		erb :'users/login'
 	end
@@ -54,9 +54,16 @@ class UsersController < Sinatra::Base
 			flash[:message] = "Please fill in all fields."
 			redirect '/signup'
 		else
-			user = User.create(params[:user])
-			session[:user_id] = user.id
-			redirect '/'
+			user_exist = User.find_by(email: params[:user][:email])
+			if user_exist
+				flash[:message] = "#{user_exist.username} exists. Please log in."
+				# session[:user_id] = user_exist.id
+				redirect '/login'
+			else
+				user = User.create(params[:user])
+				session[:user_id] = user.id
+				redirect '/'
+			end
 		end
 	end
 
