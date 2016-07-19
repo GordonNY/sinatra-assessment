@@ -1,14 +1,53 @@
 .top-down {
-
-	margin-top: 100px;
-
-}
-
-.center-page {
-	margin-left: 40%;
-	margin-right: 40%;
+	margin-top: 55px;
 }
 
 .hide{
   display:none;  
+}
+
+.nav-color {
+	background-color: #90CAF9;
+}
+
+.center-page {
+	margin-top: 0;
+	margin-left: 40%;
+	margin-right: 40%;
+	z-index: 0;
+}
+
+.center-page:before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  
+  display: block;
+  background-image: url('http://www.ruby-docs.org/assets/banner.jpg');
+  width: 100%;
+  height: 100%;
+  
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
+#user-page {
+	color: white;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.warning {
+	position: fixed;
+  left: 10%;
+  top: 10%;
 }

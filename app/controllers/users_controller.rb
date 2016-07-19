@@ -10,15 +10,14 @@ class UsersController < Sinatra::Base
 	end
 
 	get '/login' do 
-		unless session[:user_id].nil?
-      @login_active = true
-    end
+    @login_active = true
+    
 		erb :'users/login'
 	end
 
 	after '/login' do
     @login_active = false
-  end
+	end
 
 	post '/login' do 
 		user_params = params[:user]
@@ -41,12 +40,12 @@ class UsersController < Sinatra::Base
 	end
 
 	get '/signup' do 
-		unless session[:user_id].nil?
+	# unless session[:user_id].nil?
       @signup_active = true
-    end
+    # end
 		erb :'users/signup'
 	end
-	after '/login' do
+	after '/signup' do
     @signup_active = false
   end
 
