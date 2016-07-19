@@ -11,9 +11,13 @@ class ApplicationController < Sinatra::Base
     use Rack::Flash
   end
 
+  before do 
+    session[:user_id] ? @logged_in = true : @logged_in = false
+  end
+
   ['/'].each do |path|
     before path do
-      if session[:user_id].nil? || User.first(username: session[:user_id]).nil?
+      if session[:user_id].nil? || User.find(session[:user_id]).nil?
         flash[:message] = "Please log in first."
         redirect '/login' 
       end
@@ -21,9 +25,15 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do 
+    unless session[:user_id].nil?
+      @home_active = true
+    end
+    @user_id = session[:user_id]
     erb :index
   end
-
+  after '/' do
+    @home_active = false
+  end
 
 
 private

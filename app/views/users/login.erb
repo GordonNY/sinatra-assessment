@@ -5,10 +5,13 @@
 
 		<div>
 			<% if flash.has?(:message) %>
+				<h3>Error</h3>
 			  <%= flash[:message] %>
 			<% end %>
 		</div>
-
+		<br>
+		<h2 class="center-content">Log in</h2>
+		<br>
 		<form id="login-form" class="animated zoomIn" action="/login" method="post">
 		  <div class="form-group">
 		    <label>Username:</label>
