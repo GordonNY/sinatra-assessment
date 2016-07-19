@@ -54,7 +54,7 @@ class UsersController < Sinatra::Base
 			flash[:message] = "Please fill in all fields."
 			redirect '/signup'
 		else
-			User.delete_all
+			# User.delete_all
 			user = User.create(params[:user])
 			session[:user_id] = user.id
 			redirect '/'

@@ -51,3 +51,14 @@
   left: 10%;
   top: 10%;
 }
+
+.navbar-position {
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+@media only screen and (min-width:1100px) {
+	.navbar-position {
+	padding-left: 20%;
+	padding-right: 20%;
+}
