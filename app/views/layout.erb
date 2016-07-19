@@ -4,8 +4,10 @@
 		<meta charset="UTF-8">
 		<title>Tweet - Layout</title>
 
-			<!-- Bootstrap -->
+		<!-- Bootstrap -->
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
+	    <!-- Animation -->
+	    <link rel="stylesheet" href="css/animate.css">
 	    <!-- Custom CSS -->
 	    <link href="css/style.css" rel="stylesheet">
 			<!-- Custom Fonts -->
@@ -20,9 +22,7 @@
 		    </div>
 		    <ul class="nav navbar-nav">
 		      <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
-		      <li><a href="#">Blogs</a></li>
-		      <li><a href="#">About</a></li>
-		      <li><a href="#">Contact</a></li>
+		      <li><a href="#">Profile</a></li>
 		    </ul>
 		  	
 		    <ul class="nav navbar-nav navbar-right">
@@ -32,14 +32,14 @@
 		  </div><!-- /.container-fluid -->
 		</nav>
 	
-		<div class="container">
-		<div class="view-position">
-			<%= yield %>
-		</div>
+		<div class="container-fluid top-down">
+				
+				<%= yield %>
+			
 		</div>
 		
 
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>

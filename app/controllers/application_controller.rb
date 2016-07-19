@@ -11,11 +11,23 @@ class ApplicationController < Sinatra::Base
     use Rack::Flash
   end
 
-  get '/' do 
-  	erb :index
+  ['/'].each do |path|
+    before path do
+      if session[:user_id].nil? || User.first(username: session[:user_id]).nil?
+        flash[:message] = "Please log in first."
+        redirect '/login' 
+      end
+    end
   end
 
-# private
+  get '/' do 
+    erb :index
+  end
+
+
+
+private
+
 
 #   def post_params
 #        params.require(:post).permit(:image, :other, :params)
