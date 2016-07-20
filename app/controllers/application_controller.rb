@@ -9,10 +9,20 @@ class ApplicationController < Sinatra::Base
     enable :sessions
     set :session_secret, "!@$%^&QWERasdf"
     use Rack::Flash
+
+    set :server, :thin
+    register Sinatra::Reloader
+    Pusher.app_id = '227714'
+    Pusher.key = '34b83dc670b5cd1b896e'
+    Pusher.secret = '4f29dfce4294d2d5c8b2'
+
   end
+
+
 
   before do 
     session[:user_id] ? @logged_in = true : @logged_in = false
+    session[:messages] = []
   end
 
   ['/'].each do |path|
@@ -32,8 +42,7 @@ class ApplicationController < Sinatra::Base
     end
     @user_id = session[:user_id]
 
-    @channels = Channel.all
-
+    @current_channel_hide = true
 
 
 
@@ -45,9 +54,19 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/channel/:id' do
-    @channel = Channel.find(params[:id])
+    @current_channel_hide = false
+    @current_channel = Channel.find(params[:id])
+    @current_user = User.find(session[:user_id])
     
+    # register a client's interest in server events
     erb :index
+  end
+
+
+
+  post '/channel' do
+    user = User.find(session[:user_id])
+    Pusher['test_channel'].trigger('new_message', :message => params['message'], :user => user.to_s)
   end
 
 

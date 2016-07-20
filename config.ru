@@ -8,6 +8,7 @@ use Rack::Static, :urls => ['/img', '/css'], :root => 'public' # Rack fix allows
 
 use UsersController
 use ChannelsController
+use PostsController
 
 use Rack::MethodOverride
 run ApplicationController
