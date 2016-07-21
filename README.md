@@ -1,11 +1,9 @@
 # SINATRA-ASSESSMENT
 
 RUN:
-
 bundle exec thin start
 
 VISIT:
-
 http://0.0.0.0:3000/
 
 TEST ACCOUNTS:
