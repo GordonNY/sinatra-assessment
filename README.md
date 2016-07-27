@@ -1,6 +1,7 @@
 # SINATRA-ASSESSMENT
 
-![](./Screenshot 2016-07-27 10.17.50.png)
+![Sign up page](./Screenshot 2016-07-27 10.41.58.png)
+![Home page](./Screenshot 2016-07-27 10.17.50.png)
 
 RUN:
 bundle exec thin start
